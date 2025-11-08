@@ -1,0 +1,18 @@
+<h1>Call Batches</h1>
+
+<p><%= link_to "New batch", new_call_batch_path %></p>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Created at</th>
+    <th>Total calls</th>
+  </tr>
+  <% @call_batches.each do |batch| %>
+    <tr>
+      <td><%= link_to batch.name, batch %></td>
+      <td><%= batch.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      <td><%= batch.phone_calls.count %></td>
+    </tr>
+  <% end %>
+</table>
