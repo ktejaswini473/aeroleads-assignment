@@ -1,0 +1,37 @@
+<h1><%= @call_batch.name %></h1>
+
+<p><strong>Notes:</strong> <%= @call_batch.notes %></p>
+
+<% stats = @call_batch.stats %>
+<p>
+  <strong>Stats:</strong>
+  Total: <%= stats[:total] %>,
+  Queued: <%= stats[:queued] %>,
+  Calling: <%= stats[:calling] %>,
+  Completed: <%= stats[:completed] %>,
+  Failed: <%= stats[:failed] %>
+</p>
+
+<%= button_to "Start Autodialer", start_call_batch_path(@call_batch), method: :post %>
+
+<h2>Phone calls</h2>
+<table border="1">
+  <tr>
+    <th>Number</th>
+    <th>Status</th>
+    <th>Twilio SID</th>
+    <th>Error</th>
+    <th>Called at</th>
+  </tr>
+  <% @phone_calls.each do |call| %>
+    <tr>
+      <td><%= call.phone_number %></td>
+      <td><%= call.status %></td>
+      <td><%= call.twilio_sid %></td>
+      <td><%= call.error_message %></td>
+      <td><%= call.called_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Back to batches", call_batches_path %></p>
