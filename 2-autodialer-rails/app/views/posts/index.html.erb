@@ -1,0 +1,16 @@
+<h1>Blog</h1>
+
+<p><%= link_to "Generate new AI post", new_post_path %></p>
+
+<table border="1">
+  <tr>
+    <th>Title</th>
+    <th>Created at</th>
+  </tr>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= link_to post.title, post_path(post) %></td>
+      <td><%= post.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+    </tr>
+  <% end %>
+</table>
