@@ -1,0 +1,26 @@
+source "https://rubygems.org"
+
+ruby "3.2.2" # or any version you use
+
+gem "rails", "~> 7.1.0"
+gem "pg"          # or "sqlite3" if you chose sqlite when creating the app
+gem "puma"
+gem "sass-rails"
+gem "importmap-rails"
+gem "turbo-rails"
+gem "stimulus-rails"
+gem "jbuilder"
+
+# Twilio for calls
+gem "twilio-ruby"
+
+# For calling AI APIs (optional, but convenient)
+gem "httparty"
+
+group :development, :test do
+  gem "byebug"
+end
+
+group :development do
+  gem "web-console"
+end
