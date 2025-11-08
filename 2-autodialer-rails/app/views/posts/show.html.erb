@@ -1,0 +1,9 @@
+<h1><%= @post.title %></h1>
+
+<p><em>Generated at <%= @post.created_at.strftime("%Y-%m-%d %H:%M") %> using <%= @post.model_used %></em></p>
+
+<div>
+  <%= simple_format @post.body %>
+</div>
+
+<p><%= link_to "Back to blog", posts_path %></p>
