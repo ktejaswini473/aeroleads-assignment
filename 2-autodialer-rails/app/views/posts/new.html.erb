@@ -1,0 +1,32 @@
+<h1>Generate AI Blog Posts</h1>
+
+<h2>Single post</h2>
+<%= form_with model: @post do |f| %>
+  <div>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, size: 80 %>
+  </div>
+
+  <div>
+    <%= f.label :source_prompt, "Extra details for AI (optional)" %><br>
+    <%= f.text_area :source_prompt, rows: 4, cols: 80 %>
+  </div>
+
+  <div>
+    <%= f.submit "Generate single post" %>
+  </div>
+<% end %>
+
+<hr>
+
+<h2>Bulk generation (up to 10 posts)</h2>
+<%= form_with url: posts_path, method: :post do %>
+  <div>
+    <%= label_tag :bulk_titles, "One title per line" %><br>
+    <%= text_area_tag :bulk_titles, "", rows: 8, cols: 80 %>
+  </div>
+
+  <div>
+    <%= submit_tag "Generate bulk posts" %>
+  </div>
+<% end %>
