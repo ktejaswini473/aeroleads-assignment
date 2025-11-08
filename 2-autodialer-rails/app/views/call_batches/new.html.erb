@@ -1,0 +1,40 @@
+<h1>Create Call Batch</h1>
+
+<%= form_with model: @call_batch do |f| %>
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+
+  <div>
+    <%= label_tag :raw_numbers, "Phone numbers (one per line)" %><br>
+    <%= text_area_tag "call_batch[raw_numbers]", "", rows: 10, cols: 40 %>
+    <p><small>Use dummy 1800 xxx xxxx numbers for testing.</small></p>
+  </div>
+
+  <div>
+    <%= f.submit "Create batch" %>
+  </div>
+<% end %>
+
+<hr>
+
+<h2>AI Command</h2>
+<p>Try things like: <code>call all queued numbers</code> or <code>call 1800123456</code></p>
+
+<%= form_with url: ai_command_path, method: :post do %>
+  <div>
+    <%= label_tag :prompt, "Describe what you want to do" %><br>
+    <%= text_field_tag :prompt, "", size: 80 %>
+  </div>
+  <div>
+    <%= submit_tag "Run AI command" %>
+  </div>
+<% end %>
+
+<p><%= link_to "View all batches", call_batches_path %></p>
